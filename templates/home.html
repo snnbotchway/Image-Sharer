@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
+{% include 'navbar.html' %}
     {% if img_obj %}
         <div class="row px-4">
             {% for item in img_obj %}
@@ -11,8 +12,8 @@
                             <img class="card-img-top" src="{{ im.url }}" alt="Card image cap">
                         {% endthumbnail %}
                         <div class="card-body">
-                            <h5 class="card-title">{{ item.description }}</h5>
-                            <a href="#" class="btn btn-primary">View Full Image</a>
+                            <h5 class="card-title text-capitalize">{{ item.description }}</h5>
+                            <a href="/detail/{{ item.id }}" class="btn btn-primary">View Full Image</a>
                         </div>
                     </div>
                 </div>
