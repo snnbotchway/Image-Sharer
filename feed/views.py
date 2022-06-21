@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, DetailView
 from .forms import AddNewImage
 from .models import Post
 
@@ -9,7 +9,6 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['img_obj'] = Post.objects.all()
         return context
-    
 
 class NewImageView(FormView):
     template_name= 'new-image.html'
@@ -22,3 +21,9 @@ class NewImageView(FormView):
             image = form.cleaned_data['image']
         )
         return super().form_valid(form)
+
+
+class ImageDetail(DetailView):
+    template_name= 'detail.html'
+    model = Post
+

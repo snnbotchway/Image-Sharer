@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+<div class="row">
+<div class="col-9">
+<div class="mt-3 card mb-3" width="100%">
+        <div class="card-body">
+            <a href="{% url 'feed:home' %}">
+            <button type="button" class="btn btn-link">&larr;Go back</button>
+            </a>
+            <br>
+            <br>
+            <h5 class="card-title text-capitalize">{{ object.description }}</h5>
+    </div>
+        <img src="{{ object.image.url }}" width="auto" height="auto" class="card-img-top" alt="...">
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}
