@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% load thumbnail %}
+
+{% thumbnail item.image "100x100" crop="center" as im %}
+    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+{% endthumbnail %}
+
 {% block body %}
 <p>Content in here</p>
 {% endblock %}
