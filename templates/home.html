@@ -1,12 +1,32 @@
 {% extends 'base.html' %}
 
-{% load thumbnail %}
-
-{% thumbnail item.image "100x100" crop="center" as im %}
-    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-{% endthumbnail %}
-
 {% block body %}
-<p>Content in here</p>
-{% endblock %}
-
+    {% if img_obj %}
+        <div class="row px-4">
+            {% for item in img_obj %}
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card my-3" style="width: 18rem;">
+                        {% load sorl_thumbnail %}
+                        {% thumbnail item.image "200x200" crop="center" as im %}
+                            <img class="card-img-top" src="{{ im.url }}" alt="Card image cap">
+                        {% endthumbnail %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.description }}</h5>
+                            <a href="#" class="btn btn-primary">View Full Image</a>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row offset-2 my-5 py-5">
+        <div class="col-6 mx-auto">
+        <h3>There are no images!</h3>
+        <p class="font-weight-normal">Click the link below to upload an image.</p>
+        <a href="{% url 'feed:upload' %}">
+            <button class="btn btn-primary">Upload an Image</button>
+        </a>
+    </div>
+    </div>
+        {% endif %}
+        {% endblock %}
