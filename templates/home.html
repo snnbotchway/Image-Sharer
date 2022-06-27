@@ -2,6 +2,7 @@
 
 {% block body %}
 {% include 'navbar.html' %}
+{% include 'messages.html' %}
     {% if img_obj %}
         <div class="row px-4">
             {% for item in img_obj %}
@@ -9,7 +10,7 @@
                     <div class="card my-3" style="width: 18rem;">
                         {% load sorl_thumbnail %}
                         {% thumbnail item.image "200x200" crop="center" as im %}
-                            <img class="card-img-top" src="{{ im.url }}" alt="Card image cap">
+                        <img class="card-img-top" src="{{ im.url }}" alt="Card image cap">
                         {% endthumbnail %}
                         <div class="card-body">
                             <h5 class="card-title text-capitalize">{{ item.description }}</h5>
