@@ -1,2 +1,2 @@
 # Image-Sharer
-A simple image sharer
+A simple image sharing app
